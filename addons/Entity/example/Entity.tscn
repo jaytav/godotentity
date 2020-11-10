@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/Entity/src/StateMachine/State.cs" type="Script" id=1]
+[ext_resource path="res://addons/Entity/src/StateMachine/StateMachine.cs" type="Script" id=2]
+
+[node name="Entity" type="Node2D"]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+initialState = NodePath("State0/State1")
+
+[node name="State0" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+
+[node name="State1" type="Node" parent="StateMachine/State0"]
+script = ExtResource( 1 )
+
+[node name="State2" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+
+[node name="State3" type="Node" parent="StateMachine/State2"]
+script = ExtResource( 1 )
+[connection signal="Transitioned" from="StateMachine" to="StateMachine" method="_on_StateMachine_Transitioned"]
