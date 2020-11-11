@@ -3,7 +3,7 @@ using Godot.Collections;
 
 public class StateMachine : Node {
     [Signal]
-    public delegate void Transitioned(State state);
+    public delegate void Transitioned(State toState);
 
     [Export]
     private NodePath initialState;
@@ -47,6 +47,6 @@ public class StateMachine : Node {
     }
 
     private void _on_StateMachine_Transitioned(State toState) {
-        GD.Print("Transitioned to " + toState.Name);
+        GD.Print(Owner.Name + " transitioned to " + toState.Name);
     }
 }
